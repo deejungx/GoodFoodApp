@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="0344D5D1-CC3D-D55F-A0AA-70204D68F3F4" name="Dish">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:19:56 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<shortName>dish</shortName>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="64B35DC1-6A14-F0E5-5D80-1BDA9573B634">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:19:56 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>39E59376-0607-8CA2-6530-54848825F78E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="code" id="12314511-7DAC-C17C-F57A-6177A2F482CC">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:19:56 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="2D169FD3-2EEE-720B-B48E-610A9213F09B">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:19:56 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="CDC82B09-B7E8-85D6-38B2-33A64468F3CC" name="Dish_PK">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:19:56 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>64B35DC1-6A14-F0E5-5D80-1BDA9573B634</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="FAD7FD46-730C-9700-03B6-0A24A2B7E967" name="Code_unique">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 09:29:19 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<newElementsIDs>12314511-7DAC-C17C-F57A-6177A2F482CC</newElementsIDs>
+<usedAttributes>
+<attributeRef>12314511-7DAC-C17C-F57A-6177A2F482CC</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

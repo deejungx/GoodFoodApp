@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="MenuItem Dish FK" directorySegmentName="seg_0" id="3F712D66-0E59-9891-AA0B-196FAAF06A92">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:09:10 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<sourcePk>CDC82B09-B7E8-85D6-38B2-33A64468F3CC</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>0344D5D1-CC3D-D55F-A0AA-70204D68F3F4</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>F6A43071-42D6-409E-86F3-62C083DB486C</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C953FDB3-BE4B-A0A2-A119-F4FF075C8C30" name="Delivery">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:57:16 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<shortName>delivery</shortName>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="A97A1D8D-3E4D-B773-D1F3-A39F1729E1A7">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:57:24 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>39E59376-0607-8CA2-6530-54848825F78E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="deliveryStage" id="4ADBBA6F-7B3F-0641-FEB3-EA20C585B19F">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:57:41 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="assignedAgent" id="821953CB-27E8-EEAD-F1A8-61D20B7E490E">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:58:03 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="date" id="B36D59F5-645D-94AC-F339-CED6505F1FF1">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:58:23 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Order id" id="418D4771-CA71-1FA1-AB2B-3ACC66D89F3C">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:05:28 UTC</createdTime>
+<generatorID>156EBA74-7D1A-D80E-5D0E-25B5C18A6E2F</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<referedAttribute>8295D8E2-883E-09EF-E6C7-84ECF1196457</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>39E59376-0607-8CA2-6530-54848825F78E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="E48C127A-3DD6-D9C5-0C1F-9EC1BB9C6E8D" name="Delivery PK">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:57:29 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>A97A1D8D-3E4D-B773-D1F3-A39F1729E1A7</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

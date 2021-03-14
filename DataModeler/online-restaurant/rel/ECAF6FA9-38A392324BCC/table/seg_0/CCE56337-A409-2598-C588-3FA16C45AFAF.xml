@@ -1,0 +1,141 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CCE56337-A409-2598-C588-3FA16C45AFAF" name="Restaurant">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>C15EABBE-DEA6-CD17-8203-FF5813597592</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<abbreviation>restaurant</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="7F3AEB76-8A93-2651-DF2F-AA76746CEB30">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>C43AB64E-343D-44C1-556B-9684F8EE80F4</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>39E59376-0607-8CA2-6530-54848825F78E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="8841F635-A9E8-1D2F-1BAB-922AA4BF4C61">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>08C7C832-47A7-BC16-D16C-46035FEAF1E0</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="branch" id="AB796DFA-F563-A22C-948D-B255FCA3768B">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>521E547B-DA92-D956-C3E8-8C540E0565A9</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="bio" id="24D40680-596F-C53F-FCFB-98AE1E740B37">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>0264C2C8-4B1D-4EBC-7B53-22F7DB4C976E</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="phone" id="1B5EB7E2-DF3F-CD0F-AB1C-FE458F200D0C">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>82CC9A88-A0C3-3899-3D76-04FA7F7B73D9</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="displayPhoto" id="2A327407-4800-112E-0200-A816913864B4">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>E1F3939B-C90D-569F-CDEE-1FC8AAA58F86</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT029</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="costForTwo" id="B3564700-B0BC-5474-8DC0-1058C08CDEB3">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>29597D0B-51E9-AF47-2007-0C1A23694123</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="city" id="89A01A3C-5AE3-DD61-55B3-5C44AF7EE99B">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>B0DD1C62-FD36-9D5C-D5C8-3F5EBB0AC0A2</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="street" id="AA2130AF-C6FE-73C6-E83C-A834450122B7">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>837C95B9-CBE3-BDE5-A6DB-EA91E28840F7</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="18D036A2-4BD4-E0AA-D447-B1B999922865" name="Restaurant_PK">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>628F5C3D-4EE8-C93B-40A0-9A3A90C61C8C</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7F3AEB76-8A93-2651-DF2F-AA76746CEB30"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

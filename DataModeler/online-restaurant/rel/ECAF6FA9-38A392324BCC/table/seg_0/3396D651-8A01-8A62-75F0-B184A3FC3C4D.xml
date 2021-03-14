@@ -1,0 +1,90 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3396D651-8A01-8A62-75F0-B184A3FC3C4D" name="CuisineItem">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>5FF402E6-4645-F049-506E-C11EA8C2BE19</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<abbreviation>cuisineItem</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="C5C9EAC2-32A0-BB4B-83EA-D018159C2B7F">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>7B9B746B-2B72-C2EC-4865-441BBD2161C4</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>39E59376-0607-8CA2-6530-54848825F78E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Restaurant_id" id="39249E35-851E-DAB3-4BBD-97FA262FE7E4">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>5B401038-10F9-D1FD-3D00-F6AA2C56B35D</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>39E59376-0607-8CA2-6530-54848825F78E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E36A6720-C468-859F-4EE8-CEE50FA90A26" referredColumn="7F3AEB76-8A93-2651-DF2F-AA76746CEB30"/>
+</associations>
+</Column>
+<Column name="Cuisine_id" id="63A73BC9-D8AE-1B8B-08CC-3802A95D6683">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>6335F04E-F895-28E1-8AFD-7555C1E7BE5F</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>39E59376-0607-8CA2-6530-54848825F78E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5889BAF6-A2C2-D66F-5E4B-361E9DA921D0" referredColumn="0FB323C7-FC1E-CB87-140C-A675C08B42D9"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D462CEEA-B9A4-171C-DFB8-DCE887B1C07D" name="CuisineItem_PK">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>28A185C3-B59F-6F36-2EF9-1A9D932DA6A4</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C5C9EAC2-32A0-BB4B-83EA-D018159C2B7F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="43C44A95-7FCA-659A-25C4-68E0B72B8D3E" name="CuisineItem_Cuisine_FK">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>BBA61B82-0FDB-31CB-4C6F-DA7C580CE2C9</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="63A73BC9-D8AE-1B8B-08CC-3802A95D6683"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="13DB7DBA-873E-2C11-BDBC-2287DC23F29A" name="CuisineItem_Restaurant_FK">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>E79A0BEA-01E5-D16A-BDDE-3F19E12B63C1</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="39249E35-851E-DAB3-4BBD-97FA262FE7E4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

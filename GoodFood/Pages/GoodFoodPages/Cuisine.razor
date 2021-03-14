@@ -1,0 +1,76 @@
+﻿@page "/data/cuisine"
+
+@using AntDesign.TableModels
+@using DataAccessLibrary
+@using DataAccessLibrary.Models
+@using GoodFood.Models
+
+@inject ICuisineData Db
+
+<Title Level="1">Cuisine Page</Title>
+
+<Title Level="3">Insert New Cuisine</Title>
+
+<EditForm Model="@_newCuisine" OnValidSubmit="@InsertCuisine">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <InputText id="name" @bind-Value="_newCuisine.Name" />
+    <InputText id="description" @bind-Value="_newCuisine.Description" />
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>
+
+<Divider />
+
+<Title Level="3">List of available cuisines:</Title>
+
+@if (_cuisine is null)
+{
+    <div class="spinning-center">
+        <Spin />
+    </div>
+}
+else
+{
+    {
+        <Table TItem="CuisineModel" DataSource="@_cuisine" OnRowClick="OnRowClick">
+            <Column @bind-Field="@context.Id">
+                <a>@context.Id</a>
+            </Column>
+            <Column @bind-Field="@context.Name"></Column>
+            <Column @bind-Field="@context.Description"></Column>
+        </Table>
+    }
+}
+
+@code {
+    private List<CuisineModel> _cuisine;
+    private DisplayCuisineModel _newCuisine = new DisplayCuisineModel();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _cuisine = await Db.GetCuisine();
+    }
+
+    private async Task InsertCuisine()
+    {
+        CuisineModel c = new CuisineModel
+        {
+            Id = 22,
+            Name = _newCuisine.Name,
+            Description = _newCuisine.Description
+        };
+
+        await Db.InsertCuisine(c);
+
+        _cuisine.Add(c);
+
+        _newCuisine = new DisplayCuisineModel();
+    }
+
+    void OnRowClick(RowData<CuisineModel> row)
+    {
+        Console.WriteLine($"row {row.Data.Id} was clicked.");
+    }
+}

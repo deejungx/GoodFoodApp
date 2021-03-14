@@ -1,0 +1,157 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="79852BDD-2B4A-B775-4491-124C9B6C62A5" name="Order">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:48:07 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<shortName>order</shortName>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="8295D8E2-883E-09EF-E6C7-84ECF1196457">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:48:20 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>39E59376-0607-8CA2-6530-54848825F78E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="serialNumber" id="DBEBCAF7-DA08-084D-0B90-1FFBD78C04D4">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:49:00 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="orderTotal" id="6BAC1405-E158-39CE-D852-737641501071">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:49:26 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="orderStatus" id="B2550C15-8235-1786-1E36-9E30EC9EFB7A">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:49:41 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="paymentStatus" id="C5E30ED5-76B9-41AB-091B-16F6B60DF82D">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:50:00 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="creationDate" id="3EEEC414-B0C8-031C-D9FC-A47DAF3C1310">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:50:19 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<ownDataTypeParameters>,0,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="loyaltyScore" id="2928A616-AFD2-AC0A-CF11-37D3D5C82CE8">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:50:42 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="User id" id="93372C05-1103-1FB0-0743-E5E98352814C">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:03:30 UTC</createdTime>
+<generatorID>1CAEEEE6-0631-C420-69A4-9F1469B20B9B</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<referedAttribute>2C959905-C324-62E1-5A98-4ACCF7CEAF38</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>39E59376-0607-8CA2-6530-54848825F78E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="221162AC-E9BE-C42B-0C0F-253227858EA8" name="Order_PK">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-02 16:48:39 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>8295D8E2-883E-09EF-E6C7-84ECF1196457</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="A46E243E-94FF-66D6-E06C-B115BD5B8E39" name="SN_unique">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 09:28:26 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<newElementsIDs>DBEBCAF7-DA08-084D-0B90-1FFBD78C04D4</newElementsIDs>
+<usedAttributes>
+<attributeRef>DBEBCAF7-DA08-084D-0B90-1FFBD78C04D4</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

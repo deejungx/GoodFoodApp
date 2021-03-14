@@ -1,0 +1,194 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3CB54B56-8AAD-0384-2A19-3566B32F5A8E" name="MenuItem">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>F6A43071-42D6-409E-86F3-62C083DB486C</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<abbreviation>menuItem</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="E98B0877-50BC-9DD3-FD07-EF2C7CDEF3F2">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>89D90188-33EF-C32D-6E0D-13DC0BDC4539</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>39E59376-0607-8CA2-6530-54848825F78E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rate" id="83E6B6A7-A41D-CCFC-4A14-25A68E364F0B">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>B66CE438-679F-A6E7-8AC0-FBECF07D6432</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="displayName" id="96EF316E-9375-6BF4-CE2E-D258A97690C1">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>0BCD9071-6CB5-57E4-38A3-0F9F7C3063DA</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="dietCategory" id="A335F6EF-2822-9529-35AB-0BD45A4AF481">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>70011BF2-EF8E-BB8A-9154-183DD7372F35</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="description" id="1BF7C40D-77BF-0819-1233-7D75A34B1C72">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>D755A1BD-079F-C32F-6EF8-0DD45C48F1BD</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="displayPhoto" id="0CA0BE8D-C205-6F11-B845-BBC1D0952A56">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>3D227764-B01A-0A11-6CA0-A8EA35AC5238</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT029</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="isAvailable" id="77BD1FBC-0048-DE3D-C1F5-C6FBD989B5CD">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>900B93B8-30A0-9C07-5C00-86F86F26E801</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Dish_id" id="616726B3-4A21-7518-B278-077BAD75F70B">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>D293A1C8-C38A-4B6C-7A51-C4526F1D2C89</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>39E59376-0607-8CA2-6530-54848825F78E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="16AC3663-A9CC-49F1-EF4D-66C75CCAD9B0" referredColumn="462BFA13-DFF8-CB45-2982-48D4B5E76F6A"/>
+</associations>
+</Column>
+<Column name="Restaurant_id" id="55ACF1A0-1140-1C04-7450-5923EAF2E325">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>70C0971D-B1F3-E7B6-225A-77E9B0473114</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>39E59376-0607-8CA2-6530-54848825F78E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="084F3934-1E36-EACD-FF5D-88A10BF0F393" referredColumn="7F3AEB76-8A93-2651-DF2F-AA76746CEB30"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="765F2B92-D8E8-F18A-12F9-2CF9D176B2E0" name="MenuItem_PK">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>C54B45D5-39DC-4DCB-1D15-E4167E145A85</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E98B0877-50BC-9DD3-FD07-EF2C7CDEF3F2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AA4A30AB-62CE-807C-A0FD-E033912BEB4A" name="MenuItem__IDX">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 09:06:12 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E98B0877-50BC-9DD3-FD07-EF2C7CDEF3F2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1D1910FB-BD7B-976E-CD2F-633869705440" name="RestaurantMenu__IDX">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 09:06:12 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E98B0877-50BC-9DD3-FD07-EF2C7CDEF3F2"/>
+<colUsage columnID="55ACF1A0-1140-1C04-7450-5923EAF2E325"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CADA81A9-5C6B-1451-7CC2-7E877FCA6440" name="MenuDish__IDX">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 09:06:12 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E98B0877-50BC-9DD3-FD07-EF2C7CDEF3F2"/>
+<colUsage columnID="616726B3-4A21-7518-B278-077BAD75F70B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DB5C70AE-A113-B810-85E2-668C38E48B46" name="MenuItem_Dish_FK">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>3F712D66-0E59-9891-AA0B-196FAAF06A92</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="616726B3-4A21-7518-B278-077BAD75F70B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5884764F-9CE6-0B36-7C66-4754981412CB" name="MenuItem_Restaurant_FK">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>867A693C-E4A2-1DD4-9754-1D463ABD97FA</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="55ACF1A0-1140-1C04-7450-5923EAF2E325"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,147 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="ECFB7CBE-092A-6825-7A3C-7A49C22F08EB" name="UserAddress">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>3A99D602-86DD-4E23-C8BE-B63BDC1B3F35</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<abbreviation>address</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="5F1EA98E-09C9-D7F3-659C-E23C9E4EFB8B">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>C5593152-1E6E-39D9-C913-AA06ABF79252</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>39E59376-0607-8CA2-6530-54848825F78E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="longitude" id="C566891B-8AC8-E563-66C4-F226B57E05D3">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>E426BA28-301A-4694-9AB6-C1D41B60C4BC</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="latitude" id="A6663FEC-0049-624D-708E-A0AF24797061">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>DE3E81B0-B64A-4052-C94B-1174D16E8E82</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="city" id="C60D2196-06BA-13EA-FE80-82EAB5CBB390">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>394EC1BA-DB06-242D-5DBB-0D7F3ADAB4D0</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="street" id="80E7730A-46DC-A7B8-CF36-58EDF53B2F61">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>AD890C9E-761E-DC54-BE0A-78225DBA8E03</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="landmarks" id="3B13A51A-7327-86DC-D3BF-FAE05A8A4E59">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>A8CAC9AC-7AEA-2C8D-B3ED-55BFF0C73417</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="User_id" id="CC287794-C808-D989-21D5-897BCC465D18">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>ED165C98-8C3B-FC32-828C-FA39ADCF7AC0</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>39E59376-0607-8CA2-6530-54848825F78E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="982AF71D-DC60-1BA0-B81B-1975ED6412B6" referredColumn="D621CC0E-73FF-1CC6-EA97-E84231450903"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="65765FEE-0FB0-8353-2FA1-5B07F7488691" name="UserAddress_PK">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>108707A9-5001-B93C-C865-5BBC994E1C94</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5F1EA98E-09C9-D7F3-659C-E23C9E4EFB8B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3CC115FE-B389-E399-B61C-7D464ACF2E99" name="UserAddress__IDX">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 09:00:37 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5F1EA98E-09C9-D7F3-659C-E23C9E4EFB8B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BDECA28E-7133-DA29-FE79-2B3E589A49F1" name="User__IDXv1">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 09:00:37 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CC287794-C808-D989-21D5-897BCC465D18"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8381F379-1633-C77B-D633-760A1A84F0CC" name="UserAddress_User_FK">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>0F661CFA-D33D-166E-0D0E-EE40858D6198</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CC287794-C808-D989-21D5-897BCC465D18"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

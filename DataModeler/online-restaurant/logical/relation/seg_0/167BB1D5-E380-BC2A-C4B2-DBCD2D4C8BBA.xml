@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="UserAddress_User_FK" directorySegmentName="seg_0" id="167BB1D5-E380-BC2A-C4B2-DBCD2D4C8BBA">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 09:18:36 UTC</createdTime>
+<generatorID>982AF71D-DC60-1BA0-B81B-1975ED6412B6</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<sourcePk>8D7BF63E-E0A2-3C44-892B-119F2A3B102D</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>35055B80-9545-B4D7-EE19-EBCD672C7839</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>3A99D602-86DD-4E23-C8BE-B63BDC1B3F35</targetEntity>
+<transferable>true</transferable>
+<deleteRule>CASCADE</deleteRule>
+</Relation>

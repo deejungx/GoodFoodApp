@@ -1,0 +1,59 @@
+﻿@inherits LayoutComponentBase
+
+<Layout Style="min-height: 100vh; ">
+    <Sider Collapsible Collapsed=@_collapsed OnCollapse=@OnCollapse>
+        <div class="logo" />
+        <Menu Theme="MenuTheme.Dark"
+              DefaultSelectedKeys=@(new[]{"1"})
+              DefaultOpenKeys=@(new[] { "app", "admin" })
+              Mode="MenuMode.Inline">
+            @{
+                RenderFragment appFragment =
+                @<span>
+                    <Icon Type="user" Theme="outline" />
+                    <span>GoodFood</span>
+                </span>;
+            }
+            <SubMenu Key="app" TitleTemplate=appFragment>
+                <MenuItem Key="1" RouterLink="">Home</MenuItem>
+                <MenuItem Key="2" RouterLink="">My Orders</MenuItem>
+                <MenuItem Key="3" RouterLink="">Checkout</MenuItem>
+            </SubMenu>
+            @{
+                RenderFragment adminFragment =
+                @<span>
+                    <Icon Type="team" Theme="outline" />
+                    <span>Admin</span>
+                </span>;
+            }
+        <SubMenu Key="admin" TitleTemplate=adminFragment>
+            <MenuItem Key="4" RouterLink="">Dish</MenuItem>
+            <MenuItem Key="5" RouterLink="data/cuisine">Cuisine</MenuItem>
+            <MenuItem Key="6" RouterLink="">Restaurant</MenuItem>
+            <MenuItem Key="7" RouterLink="">Customer</MenuItem>
+            <MenuItem Key="8" RouterLink="">Loyalty Points</MenuItem>
+            <MenuItem Key="9" RouterLink="">Delivery Address</MenuItem>
+        </SubMenu>
+        </Menu>
+    </Sider>
+    <Layout Class="site-layout">
+        <Header Class="site-layout-background" Style=" padding: 5px;"></Header>
+        <Content Style="margin: 16px 16px;">
+            <div class="site-layout-background site-body" >
+                @Body
+            </div>
+        </Content>
+        <Footer Style="text-align:center ">GoodFood ©2021 Created by Dee Jung</Footer>
+    </Layout>
+</Layout>
+
+
+@code {
+    bool _collapsed;
+
+    void OnCollapse(bool collapsed)
+    {
+        Console.WriteLine(collapsed);
+        this._collapsed = collapsed;
+    }
+}

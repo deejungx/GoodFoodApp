@@ -1,0 +1,129 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B638DA46-AD5B-C560-C411-EDD9CC3CBC3E" name="User">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>35055B80-9545-B4D7-EE19-EBCD672C7839</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<abbreviation>user</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="D621CC0E-73FF-1CC6-EA97-E84231450903">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>2C959905-C324-62E1-5A98-4ACCF7CEAF38</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>39E59376-0607-8CA2-6530-54848825F78E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="username" id="A7B349CA-B11A-6C92-4CA2-D3988F34CD4F">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>153DD797-624E-C536-1819-BA12AD089C73</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="phone" id="D2809B55-4AB0-1AF3-A9EC-BB1D544A11FB">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>14DC9BF1-A146-563B-B9FD-A11F06D44F98</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="email" id="731B833A-60E9-E5A5-187E-3DFCCDACFAA1">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>9605B849-AD2D-C35B-F55A-E7CFDA0816DE</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="password" id="0280C817-9CAA-8771-43DB-93D44224350C">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>B8201CF2-FB6B-9146-17F8-46EF7492FB69</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="redeemedLoyalty" id="B63E90B9-2B15-C06A-EA38-461474B98428">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>A228AFA3-2815-901F-85F2-7E4409D91D8F</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E6B65ACA-44FB-EB9D-B7A2-1A5EA18B1DAA" name="User_PK">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>8D7BF63E-E0A2-3C44-892B-119F2A3B102D</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D621CC0E-73FF-1CC6-EA97-E84231450903"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5C1D4171-ADB5-888D-5AE3-6581C385C48A" name="User_phone_UN">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>3D422551-AA27-6BCF-6ED2-103AD9FE7A65</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D2809B55-4AB0-1AF3-A9EC-BB1D544A11FB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FC1C5BA0-6B44-C1FA-C837-A11E1DB55451" name="User_username_UN">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:39:42 UTC</createdTime>
+<generatorID>BD44D29A-5A06-561C-8FAD-68C6D738BE76</generatorID>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A7B349CA-B11A-6C92-4CA2-D3988F34CD4F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="41484615-F100-3A57-6C80-BD86E480CA38" name="User__IDX">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:59:06 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D621CC0E-73FF-1CC6-EA97-E84231450903"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="DeliveryAddress Delivery FK" directorySegmentName="seg_0" id="998AABBF-BF23-89C2-EA1B-B055AF5F150E">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:06:21 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<sourcePk>E48C127A-3DD6-D9C5-0C1F-9EC1BB9C6E8D</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>C953FDB3-BE4B-A0A2-A119-F4FF075C8C30</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>BD75087E-51FB-A695-ED3D-37674A8E5DCF</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

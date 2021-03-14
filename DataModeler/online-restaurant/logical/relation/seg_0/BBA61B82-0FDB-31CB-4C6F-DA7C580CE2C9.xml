@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="CuisineItem Cuisine FK" directorySegmentName="seg_0" id="BBA61B82-0FDB-31CB-4C6F-DA7C580CE2C9">
+<createdBy>Dee Jung</createdBy>
+<createdTime>2021-03-03 08:11:13 UTC</createdTime>
+<ownerDesignName>online-restaurant</ownerDesignName>
+<engineerTo>
+<item key="ECAF6FA9-539D-6114-112B-38A392324BCC" value="true"/>
+</engineerTo>
+<sourcePk>1F5DD686-4222-14A6-5183-0AA52033CC0E</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>DF1D8FB6-0416-A8F6-2F4B-4BED438D5C78</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>5FF402E6-4645-F049-506E-C11EA8C2BE19</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
