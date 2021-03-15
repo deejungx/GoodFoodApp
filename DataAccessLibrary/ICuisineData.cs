@@ -7,6 +7,8 @@ namespace DataAccessLibrary
     public interface ICuisineData
     {
         Task<List<CuisineModel>> GetCuisine();
-        Task InsertCuisine(CuisineModel cuisine);
+        Task InsertCuisine(CuisineModel dish);
+        Task DeleteCuisine(CuisineModel dish);
+        Task SaveCuisine(CuisineModel dish);
     }
 }

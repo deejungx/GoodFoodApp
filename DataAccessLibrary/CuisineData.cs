@@ -22,12 +22,30 @@ namespace DataAccessLibrary
             return _db.LoadData<CuisineModel, dynamic>(sql, new { });
         }
 
-        public Task InsertCuisine(CuisineModel cuisine)
+        public Task InsertCuisine(CuisineModel dish)
         {
             string sql = @"INSERT INTO cuisine (id, name, description)
                             VALUES (:Id, :Name, :Description)";
 
-            return _db.SaveData(sql, cuisine);
+            return _db.SaveData(sql, dish);
+        }
+
+        public Task DeleteCuisine(CuisineModel dish)
+        {
+            string sql = @"DELETE FROM cuisine
+                            WHERE
+                            id = :Id";
+
+            return _db.DeleteData(sql, dish);
+        }
+
+        public Task SaveCuisine(CuisineModel dish)
+        {
+            string sql = @"UPDATE cuisine
+                            SET name = :Name, description = :Description
+                            WHERE id = :Id";
+
+            return _db.SaveData(sql, dish);
         }
     }
 }

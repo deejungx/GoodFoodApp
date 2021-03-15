@@ -1,27 +1,27 @@
-﻿@page "/admin/cuisine"
+﻿@page "/admin/dish"
 
 @using DataAccessLibrary
 @using DataAccessLibrary.Models
 @using GoodFood.Models
 @using Oracle.ManagedDataAccess.Client
 
-@inject ICuisineData Db
+@inject IDishData Db
 @inject MessageService Message
 
-<Title Level="1">Cuisine Page</Title>
+<Title Level="1">Dish Page</Title>
 
-<Title Level="3" Style="margin-bottom: 1.2em;">Insert New Cuisine</Title>
+<Title Level="3" Style="margin-bottom: 1.2em;">Insert New Dish</Title>
 
-<Form Model="@_newCuisine"
-      OnFinish="InsertCuisine"
+<Form Model="@_newDish"
+      OnFinish="InsertDish"
       OnFinishFailed="OnFinishFailed"
       LabelColSpan="2"
       WrapperColSpan="6">
+    <FormItem Label="Code">
+        <Input @bind-Value="@context.Code" />
+    </FormItem>
     <FormItem Label="Name">
         <Input @bind-Value="@context.Name" />
-    </FormItem>
-    <FormItem Label="Description">
-        <Input @bind-Value="@context.Description"/>
     </FormItem>
     <FormItem WrapperColOffset="2" WrapperColSpan="6">
         <Button Type="@ButtonType.Primary" HtmlType="submit">
@@ -32,9 +32,9 @@
 
 <Divider />
 
-<Title Level="3">List of available cuisines:</Title>
+<Title Level="3">List of available dishes:</Title>
 
-@if (_cuisine is null)
+@if (_dish is null)
 {
     <div class="spinning-center">
         <Spin />
@@ -43,13 +43,23 @@
 else
 {
     {
-        <Table TItem="CuisineModel"
-               DataSource="@_cuisine"
+        <Table TItem="DishModel"
+               DataSource="@_dish"
                RowClassName="@(_=>"editable-row")">
             <Column @bind-Field="@context.Id">
-                    <a>@context.Id</a>
+                <a>@context.Id</a>
             </Column>
-            <Column @bind-Field="@context.Name" Sortable>
+            <Column @bind-Field="@context.Code">
+                @if (!_editCache[context.Id].edit)
+                {
+                    @context.Code
+                }
+                else
+                {
+                    <Input @bind-Value="_editCache[context.Id].data.Code" />
+                }
+            </Column>
+            <Column @bind-Field="@context.Name">
                 @if (!_editCache[context.Id].edit)
                 {
                     @context.Name
@@ -57,16 +67,6 @@ else
                 else
                 {
                     <Input @bind-Value="_editCache[context.Id].data.Name" />
-                }
-            </Column>
-            <Column @bind-Field="@context.Description">
-                @if (!_editCache[context.Id].edit)
-                {
-                    @context.Description
-                }
-                else
-                {
-                    <Input @bind-Value="_editCache[context.Id].data.Description" />
                 }
             </Column>
             <ActionColumn Title="Action">
@@ -80,7 +80,7 @@ else
                     else
                     {
                         <SpaceItem>
-                            <Button @onclick="() => SaveEdit(context.Id)" >Save</Button>
+                            <Button @onclick="() => SaveEdit(context.Id)">Save</Button>
                         </SpaceItem>
                         <SpaceItem>
                             <Popconfirm Title="Sure to cancel?"
@@ -106,33 +106,42 @@ else
 }
 
 @code {
-    private List<CuisineModel> _cuisine;
-    private DisplayCuisineModel _newCuisine = new DisplayCuisineModel();
+    private List<DishModel> _dish;
+    private DisplayDishModel _newDish = new DisplayDishModel();
 
     protected override async Task OnInitializedAsync()
     {
-        _cuisine = await Db.GetCuisine();
+        _dish = await Db.GetDish();
         UpdateEditCache();
     }
 
-    private async Task InsertCuisine()
+    private async Task InsertDish()
     {
         var r = new Random();
         var newId = r.Next(10000);
 
-        var c = new CuisineModel
+        var d = new DishModel
         {
             Id = newId,
-            Name = _newCuisine.Name,
-            Description = _newCuisine.Description
+            Code = _newDish.Code,
+            Name = _newDish.Name
         };
 
-        await Db.InsertCuisine(c);
+        try
+        {
+            await Db.InsertDish(d);
 
-        _cuisine.Add(c);
-        await Message.Success("New Cuisine Added.");
+            _dish.Add(d);
+            _newDish = new DisplayDishModel();
+            await Message.Success("New Dish Added.");
+        }
+        catch (OracleException ex)
+        {
+            await Message.Error("Code must be unique. Try again.");
 
-        _newCuisine = new DisplayCuisineModel();
+            Console.WriteLine(ex.Message);
+        }
+
     }
 
     private async Task OnFinishFailed()
@@ -140,12 +149,12 @@ else
         await Message.Error("Failed to add data.");
     }
 
-    private async Task DeleteRow(CuisineModel c)
+    private async Task DeleteRow(DishModel d)
     {
         try
         {
-            await Db.DeleteCuisine(c);
-            _cuisine.Remove(c);
+            await Db.DeleteDish(d);
+            _dish.Remove(d);
             await Message.Success("Item Removed.");
         }
         catch (OracleException ex)
@@ -156,7 +165,7 @@ else
         }
     }
 
-    readonly IDictionary<int, (bool edit, CuisineModel data)> _editCache = new Dictionary<int, (bool edit, CuisineModel data)>();
+    readonly IDictionary<int, (bool edit, DishModel data)> _editCache = new Dictionary<int, (bool edit, DishModel data)>();
 
     void StartEdit(int id)
     {
@@ -167,22 +176,31 @@ else
 
     void CancelEdit(int id)
     {
-        var data = _cuisine.FirstOrDefault(item => item.Id == id);
+        var data = _dish.FirstOrDefault(item => item.Id == id);
         _editCache[id] = new(false, data);
     }
 
     private async Task SaveEdit(int id)
     {
-        var data = _cuisine.FirstOrDefault(item => item.Id == id);
-        await Db.SaveCuisine(data);
-        _editCache[id] = new(false, data);
-        await Message.Success("Success.");
+        try
+        {
+            var data = _dish.FirstOrDefault(item => item.Id == id);
+            await Db.SaveDish(data);
+            _editCache[id] = new(false, data);
+            await Message.Success("Success.");
+        }
+        catch (OracleException ex)
+        {
+            await Message.Error("Code already in use. Try again.");
+
+            Console.WriteLine(ex.Message);
+        }
 
     }
 
     void UpdateEditCache()
     {
-        _cuisine.ForEach(item =>
+        _dish.ForEach(item =>
         {
             _editCache[item.Id] = new(false, item);
         });

@@ -27,6 +27,7 @@ namespace GoodFood
             services.AddSingleton<WeatherForecastService>();
             services.AddTransient<IConnectionManager, ConnectionManager>();
             services.AddTransient<ICuisineData, CuisineData>();
+            services.AddTransient<IDishData, DishData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 
+
+
 namespace DataAccessLibrary
 {
 
@@ -47,6 +49,14 @@ namespace DataAccessLibrary
             connection.Open();
             var data = await connection.QueryFirstAsync<T>(sql, parameters);
             return data;
+        }
+
+        public async Task DeleteData<T>(string sql, T parameters)
+        {
+            var connectionString = _config.GetConnectionString(ConnString);
+            using IDbConnection connection = new OracleConnection(connectionString);
+            connection.Open();
+            await connection.ExecuteAsync(sql, parameters);
         }
     }
     

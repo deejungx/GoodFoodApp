@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodFood", "GoodFood\GoodFood.csproj", "{AE34CACF-9E4B-4787-B6D8-7652331A9B24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLibrary", "DataAccessLibrary\DataAccessLibrary.csproj", "{5E47023E-15B5-46FF-8455-5AF18B475210}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLibrary", "DataAccessLibrary\DataAccessLibrary.csproj", "{5E47023E-15B5-46FF-8455-5AF18B475210}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

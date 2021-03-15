@@ -27,8 +27,8 @@
                 </span>;
             }
         <SubMenu Key="admin" TitleTemplate=adminFragment>
-            <MenuItem Key="4" RouterLink="">Dish</MenuItem>
-            <MenuItem Key="5" RouterLink="data/cuisine">Cuisine</MenuItem>
+            <MenuItem Key="4" RouterLink="admin/dish">Dish</MenuItem>
+            <MenuItem Key="5" RouterLink="admin/cuisine">Cuisine</MenuItem>
             <MenuItem Key="6" RouterLink="">Restaurant</MenuItem>
             <MenuItem Key="7" RouterLink="">Customer</MenuItem>
             <MenuItem Key="8" RouterLink="">Loyalty Points</MenuItem>
@@ -37,7 +37,9 @@
         </Menu>
     </Sider>
     <Layout Class="site-layout">
-        <Header Class="site-layout-background" Style=" padding: 5px;"></Header>
+        <Header Class="site-layout-background" Style="padding: 5px;">
+            <AntContainer />
+        </Header>
         <Content Style="margin: 16px 16px;">
             <div class="site-layout-background site-body" >
                 @Body
