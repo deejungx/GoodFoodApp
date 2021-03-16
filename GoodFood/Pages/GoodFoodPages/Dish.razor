@@ -130,7 +130,7 @@ else
         try
         {
             await Db.InsertDish(d);
-
+            _editCache.Add(newId, new(false, d));
             _dish.Add(d);
             _newDish = new DisplayDishModel();
             await Message.Success("New Dish Added.");

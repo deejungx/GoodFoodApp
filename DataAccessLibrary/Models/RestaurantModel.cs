@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataAccessLibrary.Models
 {
-    class RestaurantModel
+    public class RestaurantModel
     {
         [DisplayName("Id")]
         public int Id { get; set; }
@@ -20,7 +20,7 @@ namespace DataAccessLibrary.Models
         public string Bio { get; set; }
 
         [DisplayName("Phone")]
-        public int Phone { get; set; }
+        public Int64 Phone { get; set; }
 
         [DisplayName("Logo")]
         public byte[] DisplayPhoto { get; set; }

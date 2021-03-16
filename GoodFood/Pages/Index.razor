@@ -1,7 +1,58 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+@using DataAccessLibrary
+@using DataAccessLibrary.Models
 
-Welcome to your new app.
+@inject IRestaurantData Db
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<div>
+    <Row>
+        <Col Span="24">
+        <Carousel Autoplay="TimeSpan.FromSeconds(2)">
+            <CarouselSlick>
+                <img src="https://northdallasgazette.com/wp-content/uploads/2020/09/970x250.jpg" />
+            </CarouselSlick>
+            <CarouselSlick>
+                <img src="https://northdallasgazette.com/wp-content/uploads/2020/09/970x250.jpg" />
+            </CarouselSlick>
+            <CarouselSlick>
+                <img src="https://northdallasgazette.com/wp-content/uploads/2020/09/970x250.jpg" />
+            </CarouselSlick>
+        </Carousel>
+        </Col>
+    </Row>
+    <Row>
+        <Col Span="24">
+        <Title Level="1">Restaurants</Title>
+        <div>
+            <Card Hoverable Style="width: 240px" Cover="coverTemplate">
+                <CardMeta Title="Europe Street beat" Description="www.instagram.com" />
+            </Card>
+        </div>
+        </Col>
+    </Row>
+    <Row>
+        <Col Span="24">
+        <Title Level="1">Restaurants</Title>
+        <Table TItem="RestaurantModel" DataSource="@_restaurants">
+            <Column @bind-Field="@context.Name">
+                <a>@context.Name</a>
+            </Column>
+            <Column @bind-Field="@context.Phone"></Column>
+            <Column @bind-Field="@context.Branch"></Column>
+        </Table>
+        </Col>
+    </Row>
+</div>
+
+
+
+@code {
+    private List<RestaurantModel> _restaurants;
+    private RenderFragment coverTemplate =@<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />;
+
+protected override async Task OnInitializedAsync()
+{
+_restaurants = await Db.GetRestaurant();
+}
+}

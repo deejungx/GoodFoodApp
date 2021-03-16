@@ -28,6 +28,7 @@ namespace GoodFood
             services.AddTransient<IConnectionManager, ConnectionManager>();
             services.AddTransient<ICuisineData, CuisineData>();
             services.AddTransient<IDishData, DishData>();
+            services.AddTransient<IRestaurantData, RestaurantData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

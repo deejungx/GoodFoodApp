@@ -16,8 +16,8 @@
             }
             <SubMenu Key="app" TitleTemplate=appFragment>
                 <MenuItem Key="1" RouterLink="">Home</MenuItem>
-                <MenuItem Key="2" RouterLink="">My Orders</MenuItem>
-                <MenuItem Key="3" RouterLink="">Checkout</MenuItem>
+                <MenuItem Key="2" RouterLink="myorders">My Orders</MenuItem>
+                <MenuItem Key="3" RouterLink="checkout">Checkout</MenuItem>
             </SubMenu>
             @{
                 RenderFragment adminFragment =
@@ -29,10 +29,10 @@
         <SubMenu Key="admin" TitleTemplate=adminFragment>
             <MenuItem Key="4" RouterLink="admin/dish">Dish</MenuItem>
             <MenuItem Key="5" RouterLink="admin/cuisine">Cuisine</MenuItem>
-            <MenuItem Key="6" RouterLink="">Restaurant</MenuItem>
-            <MenuItem Key="7" RouterLink="">Customer</MenuItem>
-            <MenuItem Key="8" RouterLink="">Loyalty Points</MenuItem>
-            <MenuItem Key="9" RouterLink="">Delivery Address</MenuItem>
+            <MenuItem Key="6" RouterLink="admin/restaurant">Restaurant</MenuItem>
+            <MenuItem Key="7" RouterLink="admin/customer">Customer</MenuItem>
+            <MenuItem Key="8" RouterLink="admin/loyalty">Loyalty Points</MenuItem>
+            <MenuItem Key="9" RouterLink="admin/delivery">Delivery Address</MenuItem>
         </SubMenu>
         </Menu>
     </Sider>
