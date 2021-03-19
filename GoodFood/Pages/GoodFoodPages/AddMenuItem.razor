@@ -1,0 +1,136 @@
+﻿@page "/admin/menuitems/add"
+
+@using GoodFood.Models
+@using DataAccessLibrary
+@using DataAccessLibrary.Models
+@using Blazored.FluentValidation
+
+@inject IMenuItemData Db
+@inject IRestaurantData RestaurantDb
+@inject IDishData DishDb
+@inject MessageService Message
+
+
+@if (_restaurants is null | _dishes is null)
+{
+    <div class="spinning-center">
+        <Spin />
+    </div>
+}
+else
+{
+    <Title Level="1" Style="margin-bottom: 1.2em;">Add MenuItem</Title>
+
+
+    <div style="white-space: nowrap; margin-left: 40px; margin-bottom: 1.2em;">
+        <label for="restaurantInput">Restaurant:</label>
+        <Select @bind-Value="@_selectedRestaurant"
+                DataSource="_restaurants"
+                ValueName="@nameof(RestaurantModel.Name)"
+                LabelName="@nameof(RestaurantModel.Name)"
+                Style="width: 400px;"
+                id="restaurantInput">
+        </Select>
+    </div>
+
+
+    <div style="white-space: nowrap; margin-left: 40px; margin-bottom: 1.2em;">
+        <label for="dishInput">Dish:</label>
+        <Select @bind-Value="@_selectedDish"
+                DataSource="_dishes"
+                ValueName="@nameof(DishModel.Name)"
+                LabelName="@nameof(DishModel.Name)"
+                Style="width: 400px;"
+                id="dishInput">
+        </Select>
+    </div>
+
+
+    <Form @ref="_form"
+          Model="@_newMenuItem"
+          OnFinish="InsertMenuItem"
+          OnFinishFailed="OnFinishFailed"
+          LabelColSpan="2"
+          WrapperColSpan="6"
+          Style="margin-bottom: 1.2em;">
+
+        <FluentValidationValidator />
+
+        <FormItem Label="Name">
+            <Input @bind-Value="@context.DisplayName" />
+        </FormItem>
+
+        <FormItem Label="Rate">
+            <Input Type="number" @bind-Value="@context.Rate" />
+        </FormItem>
+
+        <FormItem Label="Description">
+            <TextArea MinRows="3" MaxRows="6" @bind-Value="@context.Description"></TextArea>
+        </FormItem>
+
+        <FormItem Label="Diet">
+            <Select @bind-Value="@context.DietCategory"
+                    DefaultValue="@("Non-veg")"
+                    TItemValue="string"
+                    TItem="string">
+                <SelectOptions>
+                    <SelectOption TItemValue="string" TItem="string" Value="@("Non-veg")" Label="Non-veg" />
+                    <SelectOption TItemValue="string" TItem="string" Value="@("Veg")" Label="Veg" />
+                </SelectOptions>
+            </Select>
+        </FormItem>
+
+        <FormItem Label="Is Available">
+            <Switch @bind-Value="@context.IsAvailable" />
+        </FormItem>
+
+        <FormItem WrapperColOffset="2" WrapperColSpan="6">
+            <Button Type="@ButtonType.Primary" HtmlType="submit">
+                Submit
+            </Button>
+        </FormItem>
+    </Form>
+
+}
+
+@code {
+    private readonly DisplayMenuItemModel _newMenuItem = new DisplayMenuItemModel();
+    private Form<DisplayMenuItemModel> _form;
+    private string _selectedRestaurant;
+    private string _selectedDish;
+    private List<RestaurantModel> _restaurants;
+    private List<DishModel> _dishes;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _restaurants = await RestaurantDb.GetRestaurant();
+        _dishes = await DishDb.GetDish();
+    }
+
+    private async Task InsertMenuItem(EditContext editContext)
+    {
+        var r = new Random();
+        var newId = r.Next(10000);
+
+        var menuItem = new MenuItemModel
+        {
+            Id = newId,
+            Rate = _newMenuItem.Rate,
+            DisplayName = _newMenuItem.DisplayName,
+            DietCategory = _newMenuItem.DietCategory,
+            Description = _newMenuItem.Description,
+            IsAvailable = _newMenuItem.IsAvailable ? "1" : "0",
+            RestaurantId = _restaurants.First(restaurant => restaurant.Name == _selectedRestaurant).Id,
+            DishId = _dishes.First(dish => dish.Name == _selectedDish).Id
+        };
+        await Db.InsertMenuItem(menuItem);
+        await Message.Success("New Menu Item Added.");
+        _form.Reset();
+    }
+
+    private async Task OnFinishFailed(EditContext editContext)
+    {
+        await Message.Error("Failed to add data.");
+    }
+
+}

@@ -1,0 +1,66 @@
+﻿@page "/admin/dish/add"
+
+@using GoodFood.Models
+@using Oracle.ManagedDataAccess.Client
+@using DataAccessLibrary
+@using DataAccessLibrary.Models
+
+@inject IDishData Db
+@inject MessageService Message
+
+<Title Level="1" Style="margin-bottom: 1.2em;">Add New Dish</Title>
+
+<Form @ref="_form"
+      Model="@_newDish"
+      OnFinish="InsertDish"
+      OnFinishFailed="OnFinishFailed"
+      LabelColSpan="2"
+      WrapperColSpan="6"
+      Style="margin-bottom: 1.2em;">
+    <FormItem Label="Code">
+        <Input @bind-Value="@context.Code" />
+    </FormItem>
+    <FormItem Label="Name">
+        <Input @bind-Value="@context.Name" />
+    </FormItem>
+    <FormItem WrapperColOffset="2" WrapperColSpan="6">
+        <Button Type="@ButtonType.Primary" HtmlType="submit">
+            Submit
+        </Button>
+    </FormItem>
+</Form>
+
+@code {
+    private DisplayDishModel _newDish = new DisplayDishModel();
+    private Form<DisplayDishModel> _form;
+
+    private async Task InsertDish(EditContext editContext)
+    {
+        var r = new Random();
+        var newId = r.Next(10000);
+
+        var d = new DishModel
+        {
+            Id = newId,
+            Code = _newDish.Code,
+            Name = _newDish.Name
+        };
+
+        try
+        {
+            await Db.InsertDish(d);
+            await Message.Success("New Dish Added.");
+        }
+        catch (OracleException ex)
+        {
+            await Message.Error("Code must be unique. Try again.");
+            Console.WriteLine(ex.Message);
+        }
+        _form.Reset();
+    }
+
+    private async Task OnFinishFailed(EditContext editContext)
+    {
+        await Message.Error("Failed to add data.");
+    }
+}

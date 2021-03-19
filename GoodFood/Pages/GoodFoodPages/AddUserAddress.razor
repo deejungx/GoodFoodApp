@@ -1,0 +1,123 @@
+﻿@page "/admin/delivery/add"
+
+@using GoodFood.Models
+@using DataAccessLibrary
+@using DataAccessLibrary.Models
+@using Blazored.FluentValidation
+@using GoogleMapsComponents
+@using GoogleMapsComponents.Maps
+
+@inject IUserAddressData Db
+@inject ICustomerData CustomerDb
+@inject MessageService Message
+
+
+@if (_customers is null)
+{
+    <div class="spinning-center">
+        <Spin />
+    </div>
+}
+else
+{
+    <Title Level="1" Style="margin-bottom: 1.2em;">Add Delivery Address</Title>
+
+    <div Style="margin-bottom: 1.2em; max-width: 600px;">
+        <GoogleMap @ref="@map1" Id="map1" Options="@mapOptions"></GoogleMap>
+    </div>
+    
+
+    <div style="white-space: nowrap; margin-left: 40px; margin-bottom: 1.2em;">
+        <label for="menuInput">User:</label>
+        <Select @bind-Value="@_selectedUser"
+                DataSource="_customers"
+                ValueName="@nameof(CustomerModel.Username)"
+                LabelName="@nameof(CustomerModel.Username)"
+                Style="width: 400px;"
+                id="menuInput">
+        </Select>
+    </div>
+
+
+    <Form @ref="_form"
+          Model="@_newAddress"
+          OnFinish="InsertUserAddress"
+          OnFinishFailed="OnFinishFailed"
+          LabelColSpan="2"
+          WrapperColSpan="6"
+          Style="margin-bottom: 1.2em;">
+
+        <FluentValidationValidator />
+
+        <FormItem Label="City">
+            <Input @bind-Value="@context.City" />
+        </FormItem>
+
+        <FormItem Label="Street">
+            <Input @bind-Value="@context.Street" />
+        </FormItem>
+
+        <FormItem Label="Landmarks">
+            <Input @bind-Value="@context.Landmarks" />
+        </FormItem>
+
+
+        <FormItem WrapperColOffset="2" WrapperColSpan="6">
+            <Button Type="@ButtonType.Primary" HtmlType="submit">
+                Submit
+            </Button>
+        </FormItem>
+    </Form>
+
+}
+
+@code {
+    private readonly DisplayUserAddressModel _newAddress = new DisplayUserAddressModel();
+    private Form<DisplayUserAddressModel> _form;
+    private string _selectedUser;
+    private List<CustomerModel> _customers;
+    private GoogleMap map1;
+    private MapOptions mapOptions;	
+
+    protected override async Task OnInitializedAsync()
+    {
+        _customers = await CustomerDb.GetCustomer();
+
+        mapOptions = new MapOptions()
+        {
+            Zoom = 13,
+            Center = new LatLngLiteral()
+            {
+                Lat = 13.505892,
+                Lng = 100.8162
+            },
+            MapTypeId = MapTypeId.Roadmap
+        };
+    }
+
+    private async Task InsertUserAddress(EditContext editContext)
+    {
+        var r = new Random();
+        var newId = r.Next(10000);
+
+        var userAddress = new UserAddressModel
+        {
+            Id = newId,
+            Longitude = _newAddress.Longitude,
+            Latitude = _newAddress.Latitude,
+            City = _newAddress.City,
+            Street = _newAddress.Street,
+            Landmarks = _newAddress.Landmarks,
+            UserId = _customers.First(customer => customer.Username == _selectedUser).Id
+        };
+        await Db.InsertUserAddress(userAddress);
+        await Message.Success("New Address Added.");
+        _form.Reset();
+    }
+
+    private async Task OnFinishFailed(EditContext editContext)
+    {
+        await Message.Error("Failed to add data.");
+    }
+
+}

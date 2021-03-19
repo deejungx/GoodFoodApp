@@ -7,6 +7,8 @@
 
   <ItemGroup>
     <PackageReference Include="AntDesign" Version="0.7.2" />
+    <PackageReference Include="Blazored.FluentValidation" Version="1.4.1" />
+    <PackageReference Include="BlazorGoogleMaps" Version="1.0.12" />
     <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.1" />
   </ItemGroup>
 

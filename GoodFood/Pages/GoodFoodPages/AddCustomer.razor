@@ -1,0 +1,77 @@
+﻿@page "/admin/customer/add"
+
+@using GoodFood.Models
+@using DataAccessLibrary
+@using DataAccessLibrary.Models
+@using Blazored.FluentValidation
+
+@inject ICustomerData Db
+@inject MessageService Message
+
+<Title Level="1" Style="margin-bottom: 1.2em;">Add Customer</Title>
+
+<Form @ref="_form"
+      Model="@_newCustomer"
+      OnFinish="InsertCustomer"
+      OnFinishFailed="OnFinishFailed"
+      LabelColSpan="2"
+      WrapperColSpan="6"
+      Style="margin-bottom: 1.2em;">
+
+    <FluentValidationValidator />
+
+    <FormItem Label="Username">
+        <Input @bind-Value="@context.Username" />
+    </FormItem>
+
+    <FormItem Label="Phone">
+        <Input Type="number" @bind-Value="@context.Phone" />
+    </FormItem>
+
+    <FormItem Label="Email">
+        <Input Type="email" @bind-Value="@context.Email" />
+    </FormItem>
+
+    <FormItem Label="Password">
+        <InputPassword @bind-Value="@context.Password" />
+    </FormItem>
+
+    <FormItem Label="Redeemed Loyalty">
+        <AntDesign.InputNumber Min="0" Max="10000" Step="1" @bind-Value="@context.RedeemedLoyalty" />
+    </FormItem>
+
+    <FormItem WrapperColOffset="2" WrapperColSpan="6">
+        <Button Type="@ButtonType.Primary" HtmlType="submit">
+            Submit
+        </Button>
+    </FormItem>
+</Form>
+
+@code {
+    private DisplayCustomerModel _newCustomer = new DisplayCustomerModel();
+    private Form<DisplayCustomerModel> _form;
+
+    private async Task InsertCustomer(EditContext editContext)
+    {
+        var r = new Random();
+        var newId = r.Next(10000);
+
+        var c = new CustomerModel
+        {
+            Id = newId,
+            Username = _newCustomer.Username,
+            Phone = _newCustomer.Phone,
+            Email = _newCustomer.Email,
+            Password = _newCustomer.Password,
+            RedeemedLoyalty = _newCustomer.RedeemedLoyalty
+        };
+        await Db.InsertCustomer(c);
+        await Message.Success("New Customer Added.");
+        _form.Reset();
+    }
+
+    private async Task OnFinishFailed(EditContext editContext)
+    {
+        await Message.Error("Failed to add data.");
+    }
+}

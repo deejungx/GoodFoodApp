@@ -1,0 +1,56 @@
+﻿@page "/admin/cuisine/add"
+
+@using GoodFood.Models
+@using DataAccessLibrary
+@using DataAccessLibrary.Models
+
+@inject ICuisineData Db
+@inject MessageService Message
+
+<Title Level="1" Style="margin-bottom: 1.2em;">Add New Cuisine</Title>
+
+<Form @ref="_form"
+       Model="@_newCuisine"
+       OnFinish="InsertCuisine"
+       OnFinishFailed="OnFinishFailed"
+       LabelColSpan="2"
+       WrapperColSpan="6"
+       Style="margin-bottom: 1.2em;">
+    <FormItem Label="Name">
+        <Input @bind-Value="@context.Name" />
+    </FormItem>
+    <FormItem Label="Description">
+        <Input @bind-Value="@context.Description" />
+    </FormItem>
+    <FormItem WrapperColOffset="2" WrapperColSpan="6">
+        <Button Type="@ButtonType.Primary" HtmlType="submit">
+            Submit
+        </Button>
+    </FormItem>
+</Form>
+
+@code {
+    private DisplayCuisineModel _newCuisine = new DisplayCuisineModel();
+    private Form<DisplayCuisineModel> _form;
+
+    private async Task InsertCuisine(EditContext editContext)
+    {
+        var r = new Random();
+        var newId = r.Next(10000);
+
+        var c = new CuisineModel
+        {
+            Id = newId,
+            Name = _newCuisine.Name,
+            Description = _newCuisine.Description
+        };
+        await Db.InsertCuisine(c);
+        await Message.Success("New Cuisine Added.");
+        _form.Reset();
+    }
+
+    private async Task OnFinishFailed(EditContext editContext)
+    {
+        await Message.Error("Failed to add data.");
+    }
+}

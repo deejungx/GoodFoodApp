@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataAccessLibrary.Models
 {
@@ -20,7 +19,8 @@ namespace DataAccessLibrary.Models
         public string Bio { get; set; }
 
         [DisplayName("Phone")]
-        public Int64 Phone { get; set; }
+        [Phone]
+        public long Phone { get; set; }
 
         [DisplayName("Logo")]
         public byte[] DisplayPhoto { get; set; }
@@ -33,5 +33,6 @@ namespace DataAccessLibrary.Models
 
         [DisplayName("Street")]
         public string Street { get; set; }
+
     }
 }

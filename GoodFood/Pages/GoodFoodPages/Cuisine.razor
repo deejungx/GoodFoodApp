@@ -2,33 +2,17 @@
 
 @using DataAccessLibrary
 @using DataAccessLibrary.Models
-@using GoodFood.Models
 @using Oracle.ManagedDataAccess.Client
 
 @inject ICuisineData Db
 @inject MessageService Message
+@inject NavigationManager NavigationManager
 
 <Title Level="1">Cuisine Page</Title>
 
-<Title Level="3" Style="margin-bottom: 1.2em;">Insert New Cuisine</Title>
-
-<Form Model="@_newCuisine"
-      OnFinish="InsertCuisine"
-      OnFinishFailed="OnFinishFailed"
-      LabelColSpan="2"
-      WrapperColSpan="6">
-    <FormItem Label="Name">
-        <Input @bind-Value="@context.Name" />
-    </FormItem>
-    <FormItem Label="Description">
-        <Input @bind-Value="@context.Description"/>
-    </FormItem>
-    <FormItem WrapperColOffset="2" WrapperColSpan="6">
-        <Button Type="@ButtonType.Primary" HtmlType="submit">
-            Submit
-        </Button>
-    </FormItem>
-</Form>
+<Button Type="primary" Shape="round" Icon="plus" Size="large" OnClick="NavigateToAddCuisine">
+    New Cuisine
+</Button>
 
 <Divider />
 
@@ -47,27 +31,27 @@ else
                DataSource="@_cuisine"
                RowClassName="@(_=>"editable-row")">
             <Column @bind-Field="@context.Id">
-                    <a>@context.Id</a>
+                <a>@context.Id</a>
             </Column>
             <Column @bind-Field="@context.Name" Sortable>
                 @if (!_editCache[context.Id].edit)
-                {
+                        {
                     @context.Name
-                }
-                else
-                {
+                        }
+                        else
+                        {
                     <Input @bind-Value="_editCache[context.Id].data.Name" />
-                }
+                        }
             </Column>
             <Column @bind-Field="@context.Description">
                 @if (!_editCache[context.Id].edit)
-                {
+                        {
                     @context.Description
-                }
-                else
-                {
+                        }
+                        else
+                        {
                     <Input @bind-Value="_editCache[context.Id].data.Description" />
-                }
+                        }
             </Column>
             <ActionColumn Title="Action">
                 <Space>
@@ -80,7 +64,7 @@ else
                     else
                     {
                         <SpaceItem>
-                            <Button @onclick="() => SaveEdit(context.Id)" >Save</Button>
+                            <Button @onclick="() => SaveEdit(context.Id)">Save</Button>
                         </SpaceItem>
                         <SpaceItem>
                             <Popconfirm Title="Sure to cancel?"
@@ -107,7 +91,6 @@ else
 
 @code {
     private List<CuisineModel> _cuisine;
-    private DisplayCuisineModel _newCuisine = new DisplayCuisineModel();
 
     protected override async Task OnInitializedAsync()
     {
@@ -115,29 +98,9 @@ else
         UpdateEditCache();
     }
 
-    private async Task InsertCuisine()
+    private void NavigateToAddCuisine()
     {
-        var r = new Random();
-        var newId = r.Next(10000);
-
-        var c = new CuisineModel
-        {
-            Id = newId,
-            Name = _newCuisine.Name,
-            Description = _newCuisine.Description
-        };
-
-        await Db.InsertCuisine(c);
-
-        _cuisine.Add(c);
-        await Message.Success("New Cuisine Added.");
-
-        _newCuisine = new DisplayCuisineModel();
-    }
-
-    private async Task OnFinishFailed()
-    {
-        await Message.Error("Failed to add data.");
+        NavigationManager.NavigateTo("/admin/cuisine/add");
     }
 
     private async Task DeleteRow(CuisineModel c)

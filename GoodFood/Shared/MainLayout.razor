@@ -1,7 +1,7 @@
 ﻿@inherits LayoutComponentBase
 
 <Layout Style="min-height: 100vh; ">
-    <Sider Collapsible Collapsed=@_collapsed OnCollapse=@OnCollapse>
+    <Sider Collapsible Collapsed=@_collapsed OnCollapse=@OnCollapse Style="overflow: auto;height: 100vh;position: fixed;left: 0;">
         <div class="logo" />
         <Menu Theme="MenuTheme.Dark"
               DefaultSelectedKeys=@(new[]{"1"})
@@ -10,33 +10,35 @@
             @{
                 RenderFragment appFragment =
                 @<span>
-                    <Icon Type="user" Theme="outline" />
+                     <Icon Type="coffee" Theme="outline" />
                     <span>GoodFood</span>
                 </span>;
             }
-            <SubMenu Key="app" TitleTemplate=appFragment>
-                <MenuItem Key="1" RouterLink="">Home</MenuItem>
-                <MenuItem Key="2" RouterLink="myorders">My Orders</MenuItem>
-                <MenuItem Key="3" RouterLink="checkout">Checkout</MenuItem>
-            </SubMenu>
+        <SubMenu Key="app" TitleTemplate=appFragment>
+            <MenuItem Key="1" RouterLink="">Home</MenuItem>
+            <MenuItem Key="2" RouterLink="search">Search</MenuItem>
+            <MenuItem Key="3" RouterLink="order/activity">Order Activity</MenuItem>
+            <MenuItem Key="4" RouterLink="order/details">Order Details</MenuItem>
+        </SubMenu>
             @{
                 RenderFragment adminFragment =
                 @<span>
-                    <Icon Type="team" Theme="outline" />
-                    <span>Admin</span>
+                    <Icon Type="setting" Theme="outline" />
+                    <span>CRUD</span>
                 </span>;
             }
         <SubMenu Key="admin" TitleTemplate=adminFragment>
-            <MenuItem Key="4" RouterLink="admin/dish">Dish</MenuItem>
-            <MenuItem Key="5" RouterLink="admin/cuisine">Cuisine</MenuItem>
-            <MenuItem Key="6" RouterLink="admin/restaurant">Restaurant</MenuItem>
-            <MenuItem Key="7" RouterLink="admin/customer">Customer</MenuItem>
-            <MenuItem Key="8" RouterLink="admin/loyalty">Loyalty Points</MenuItem>
-            <MenuItem Key="9" RouterLink="admin/delivery">Delivery Address</MenuItem>
+            <MenuItem Key="5" RouterLink="admin/dish">Dish</MenuItem>
+            <MenuItem Key="6" RouterLink="admin/cuisine">Cuisine</MenuItem>
+            <MenuItem Key="7" RouterLink="admin/restaurant">Restaurant</MenuItem>
+            <MenuItem Key="8" RouterLink="admin/customer">Customer</MenuItem>
+            <MenuItem Key="9" RouterLink="admin/loyalty">Loyalty Points</MenuItem>
+            <MenuItem Key="10" RouterLink="admin/delivery">Delivery Address</MenuItem>
+            <MenuItem Key="11" RouterLink="admin/menuitems">Menu Items</MenuItem>
         </SubMenu>
         </Menu>
     </Sider>
-    <Layout Class="site-layout">
+    <Layout Class="site-layout" Style=" margin-left: 200px">
         <Header Class="site-layout-background" Style="padding: 5px;">
             <AntContainer />
         </Header>

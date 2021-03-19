@@ -1,24 +1,25 @@
-﻿@page "/admin/dish"
+﻿@page "/admin/delivery"
 
 @using DataAccessLibrary
 @using DataAccessLibrary.Models
 @using Oracle.ManagedDataAccess.Client
 
-@inject IDishData Db
+@inject IUserAddressData Db
 @inject MessageService Message
 @inject NavigationManager NavigationManager
 
-<Title Level="1">Dish Page</Title>
+<Title Level="1">Delivery Address Page</Title>
 
-<Button Type="primary" Shape="round" Icon="plus" Size="large" OnClick="NavigateToAddDish">
-    New Dish
+<Button Type="primary" Shape="round" Icon="plus" Size="large" OnClick="NavigateToAddMenuItem">
+    New Delivery Address
 </Button>
 
 <Divider />
 
-<Title Level="3">List of available dishes:</Title>
+<Title Level="3">List of Addresses:</Title>
 
-@if (_dish is null)
+
+@if (_addresses is null)
 {
     <div class="spinning-center">
         <Spin />
@@ -27,32 +28,49 @@
 else
 {
     {
-        <Table TItem="DishModel"
-               DataSource="@_dish"
+        <Table TItem="UserAddressModel"
+               DataSource="@_addresses"
                RowClassName="@(_ => "editable-row")">
+
             <Column @bind-Field="@context.Id">
-                <a>@context.Id</a>
+                @context.Id
             </Column>
-            <Column @bind-Field="@context.Code">
+
+            <Column Title="Customer" TData="string" DataIndex="User.Username" Sortable></Column>
+
+            <Column @bind-Field="@context.City" Sortable>
                 @if (!_editCache[context.Id].edit)
                         {
-                    @context.Code
+                    @context.City
                         }
                         else
                         {
-                    <Input @bind-Value="_editCache[context.Id].data.Code" />
+                    <Input @bind-Value="_editCache[context.Id].data.City" />
                         }
             </Column>
-            <Column @bind-Field="@context.Name">
+
+            <Column @bind-Field="@context.Street" Sortable>
                 @if (!_editCache[context.Id].edit)
-                        {
-                    @context.Name
-                        }
-                        else
-                        {
-                    <Input @bind-Value="_editCache[context.Id].data.Name" />
-                        }
+                {
+                    @context.Street
+                }
+                else
+                {
+                    <Input @bind-Value="_editCache[context.Id].data.Street" />
+                }
             </Column>
+            
+            <Column @bind-Field="@context.Landmarks" Sortable>
+                @if (!_editCache[context.Id].edit)
+                {
+                    @context.Landmarks
+                }
+                else
+                {
+                    <Input @bind-Value="_editCache[context.Id].data.Landmarks" />
+                }
+            </Column>
+
             <ActionColumn Title="Action">
                 <Space>
                     @if (!_editCache[context.Id].edit)
@@ -90,25 +108,25 @@ else
 }
 
 @code {
-    private List<DishModel> _dish;
+    private List<UserAddressModel> _addresses;
 
     protected override async Task OnInitializedAsync()
     {
-        _dish = await Db.GetDish();
+        _addresses = await Db.GetUserAddress();
         UpdateEditCache();
     }
 
-    private void NavigateToAddDish()
+    private void NavigateToAddMenuItem()
     {
-        NavigationManager.NavigateTo("/admin/dish/add");
+        NavigationManager.NavigateTo("/admin/delivery/add");
     }
 
-    private async Task DeleteRow(DishModel d)
+    private async Task DeleteRow(UserAddressModel address)
     {
         try
         {
-            await Db.DeleteDish(d);
-            _dish.Remove(d);
+            await Db.DeleteUserAddress(address);
+            _addresses.Remove(address);
             await Message.Success("Item Removed.");
         }
         catch (OracleException ex)
@@ -119,7 +137,7 @@ else
         }
     }
 
-    readonly IDictionary<int, (bool edit, DishModel data)> _editCache = new Dictionary<int, (bool edit, DishModel data)>();
+    readonly IDictionary<int, (bool edit, UserAddressModel data)> _editCache = new Dictionary<int, (bool edit, UserAddressModel data)>();
 
     void StartEdit(int id)
     {
@@ -130,7 +148,7 @@ else
 
     void CancelEdit(int id)
     {
-        var data = _dish.FirstOrDefault(item => item.Id == id);
+        var data = _addresses.FirstOrDefault(item => item.Id == id);
         _editCache[id] = new(false, data);
     }
 
@@ -138,14 +156,14 @@ else
     {
         try
         {
-            var data = _dish.FirstOrDefault(item => item.Id == id);
-            await Db.SaveDish(data);
+            var data = _addresses.FirstOrDefault(item => item.Id == id);
+            await Db.SaveUserAddress(data);
             _editCache[id] = new(false, data);
             await Message.Success("Success.");
         }
         catch (OracleException ex)
         {
-            await Message.Error("Code already in use. Try again.");
+            await Message.Error("Error saving data.");
 
             Console.WriteLine(ex.Message);
         }
@@ -154,7 +172,7 @@ else
 
     void UpdateEditCache()
     {
-        _dish.ForEach(item =>
+        _addresses.ForEach(item =>
         {
             _editCache[item.Id] = new(false, item);
         });

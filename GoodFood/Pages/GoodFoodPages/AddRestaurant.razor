@@ -1,0 +1,96 @@
+﻿@page "/admin/restaurant/add"
+
+@using GoodFood.Models
+@using Blazored.FluentValidation
+@using DataAccessLibrary
+@using DataAccessLibrary.Models
+@using System.IO
+
+@inject IRestaurantData Db
+@inject MessageService Message
+
+<Title Level="1" Style="margin-bottom: 1.2em;">Add New Restaurant</Title>
+
+<Form @ref="_form"
+       Model="@_newRestaurant"
+       OnFinish="InsertRestaurant"
+       OnFinishFailed="OnFinishFailed"
+       LabelColSpan="2"
+       WrapperColSpan="6"
+       Style="margin-bottom: 1.2em;">
+
+    <FluentValidationValidator/>
+
+    <FormItem Label="Name">
+        <Input @bind-Value="@context.Name"/>
+    </FormItem>
+    <FormItem Label="Branch">
+        <Input @bind-Value="@context.Branch"/>
+    </FormItem>
+    <FormItem Label="Bio">
+        <TextArea MinRows="3" MaxRows="6" @bind-Value="@context.Bio" />
+    </FormItem>
+    <FormItem Label="Phone">
+        <Input Type="number" @bind-Value="@context.Phone"/>
+    </FormItem>
+    <FormItem Label="Cost For 2">
+        <AntDesign.InputNumber Min="0" Max="10000" @bind-Value="@context.CostForTwo"/>
+    </FormItem>
+    <FormItem Label="City">
+        <Input @bind-Value="@context.City"/>
+    </FormItem>
+    <FormItem Label="Street">
+        <Input @bind-Value="@context.Street"/>
+    </FormItem>
+    <FormItem WrapperColOffset="2" WrapperColSpan="6">
+        <Button Type="@ButtonType.Primary" HtmlType="submit">
+            Submit
+        </Button>
+    </FormItem>
+</Form>
+
+@code {
+    private DisplayRestaurantModel _newRestaurant = new DisplayRestaurantModel();
+    private Form<DisplayRestaurantModel> _form;
+
+    private async Task InsertRestaurant(EditContext editContext)
+    {
+        var r = new Random();
+        var newId = r.Next(10000);
+
+        var d = new RestaurantModel
+        {
+            Id = newId,
+            Name = _newRestaurant.Name,
+            Branch = _newRestaurant.Branch,
+            Bio = _newRestaurant.Bio,
+            Phone = _newRestaurant.Phone,
+            CostForTwo = (float)_newRestaurant.CostForTwo,
+            City = _newRestaurant.City,
+            Street = _newRestaurant.Street
+        };
+
+        await Db.InsertRestaurant(d);
+        await Message.Success("New Restaurant Added.");
+        _form.Reset();
+    }
+
+    private async Task OnFinishFailed(EditContext editContext)
+    {
+        await Message.Error("Failed to add data.");
+    }
+
+    public static byte[] ReadFully(Stream input)
+    {
+        byte[] buffer = new byte[16*1024];
+        using (MemoryStream ms = new MemoryStream())
+        {
+            int read;
+            while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                ms.Write(buffer, 0, read);
+            }
+            return ms.ToArray();
+        }
+    }
+}

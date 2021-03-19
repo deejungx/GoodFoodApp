@@ -1,0 +1,56 @@
+﻿@page "/search"
+
+@using DataAccessLibrary
+@using DataAccessLibrary.Models
+@using Oracle.ManagedDataAccess.Client
+
+@inject IMenuItemData Db
+@inject MessageService Message
+@inject NavigationManager NavigationManager
+
+<Title Level="1">Search</Title>
+
+<Divider />
+
+<Title Level="3">Search for your favorite dish:</Title>
+
+<div style="margin-bottom: 20px; width: 500px; margin-left: 20px;">
+    <AntDesign.Search Id="searchBar" Size="@InputSize.Large" EnterButton="@("Search")" @bind-Value="@_searchTerm" OnSearch="OnSubmit" />
+</div>
+
+<div style="width: 800px;">
+    <AntList DataSource="@_menuItems" TItem="MenuItemModel" Size="large">
+        <ListItem>
+            <ListItemMeta>
+                <DescriptionTemplate>
+                    @context.Restaurant.Name | @context.Restaurant.City
+                    <Paragraph>@context.Description</Paragraph>
+                </DescriptionTemplate>
+                <TitleTemplate>
+                    @context.DisplayName
+                </TitleTemplate>
+            </ListItemMeta>
+            <div style="font-size: large;">
+                <Icon Type="dollar" Theme="outline" Style="margin-right: 10px;" />
+                <span>Rs. @context.Rate</span>
+            </div>
+        </ListItem>
+    </AntList>
+</div>
+
+
+@code {
+    private List<MenuItemModel> _menuItems;
+    private string _searchTerm;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _menuItems = await Db.GetExpandedMenuItems("");
+    }
+
+    private async Task OnSubmit()
+    {
+        _menuItems = await Db.GetExpandedMenuItems(_searchTerm);
+        await Message.Info("Search complete.");
+    }
+}
