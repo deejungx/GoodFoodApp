@@ -16,5 +16,7 @@ namespace DataAccessLibrary
         Task<List<LoyaltyPointsModel>> GetLoyaltyPoints(string sql);
         Task<List<UserAddressModel>> GetUserAddresses(string sql);
         Task<List<MenuItemModel>> GetExpandedMenuItems<T>(string sql, T parameters);
+        Task<List<OrderModel>> GetOrdersExtended<T>(string sql, T parameters);
+        Task<List<OrderModel>> GetTopRestaurantOrders<T>(string sql, T parameters);
     }
 }

@@ -31,5 +31,6 @@ namespace DataAccessLibrary.Models
         public CustomerModel User { get; set; }
 
         public List<LineItemModel> LineItems { get; set; }
+
     }
 }

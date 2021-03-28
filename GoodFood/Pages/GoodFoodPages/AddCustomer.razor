@@ -4,6 +4,7 @@
 @using DataAccessLibrary
 @using DataAccessLibrary.Models
 @using Blazored.FluentValidation
+@using Oracle.ManagedDataAccess.Client
 
 @inject ICustomerData Db
 @inject MessageService Message
@@ -65,8 +66,20 @@
             Password = _newCustomer.Password,
             RedeemedLoyalty = _newCustomer.RedeemedLoyalty
         };
-        await Db.InsertCustomer(c);
-        await Message.Success("New Customer Added.");
+
+        try
+        {
+            await Db.InsertCustomer(c);
+            await Message.Success("New Customer Added.");
+        }
+        catch (OracleException ex)
+        {
+            await Message.Error("Username already taken. Try again.");
+
+            Console.WriteLine(ex.Message);
+        }
+
+        
         _form.Reset();
     }
 

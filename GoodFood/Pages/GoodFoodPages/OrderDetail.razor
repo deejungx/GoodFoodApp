@@ -1,0 +1,70 @@
+﻿@page "/order/details"
+
+@using DataAccessLibrary
+@using DataAccessLibrary.Models
+@using Oracle.ManagedDataAccess.Client
+
+@inject IOrderData Db
+@inject MessageService Message
+@inject NavigationManager NavigationManager
+
+<Title Level="1">Order Details</Title>
+
+<Divider />
+
+<Title Level="3">Search for username:</Title>
+
+<div style="margin-bottom: 20px; width: 500px; margin-left: 20px;">
+    <AntDesign.Search Id="searchBar" Size="@InputSize.Large" EnterButton="@("Search")" @bind-Value="@_searchTerm" OnSearch="OnSubmit" />
+</div>
+
+
+<div style="width: 800px;">
+    <AntList DataSource="@_orders" TItem="OrderModel" Size="large">
+        <ListItem>
+            <ListItemMeta>
+                <DescriptionTemplate>
+                    <Descriptions Title="Order Info">
+                        <DescriptionsItem Title="User">@context.User.Username</DescriptionsItem>
+                        <DescriptionsItem Title="Payment">@context.PaymentStatus</DescriptionsItem>
+                        <DescriptionsItem Title="S.N.">@context.SerialNumber</DescriptionsItem>
+                        <AntList DataSource="@context.LineItems" TItem="LineItemModel" >
+                            <ChildContent Context="item">
+                                <ListItem>
+                                    <DescriptionsItem Title="Item name" Span="1">@item.MenuItem.DisplayName</DescriptionsItem>
+                                    <DescriptionsItem Title="Unit Cost" Span="1">Rs. @item.MenuItem.Rate</DescriptionsItem>
+                                    <DescriptionsItem Title="Quantity" Span="1"># @item.Quantity</DescriptionsItem>
+                                </ListItem>
+                            </ChildContent>
+                        </AntList>
+                    </Descriptions>
+                </DescriptionTemplate>
+                <TitleTemplate>
+                    Order #@context.Id - @context.OrderStatus
+                </TitleTemplate>
+            </ListItemMeta>
+            <div style="font-size: large;">
+                <Icon Type="dollar" Theme="outline" Style="margin-right: 10px;" />
+                <span>Rs. @context.OrderTotal</span>
+            </div>
+        </ListItem>
+    </AntList>
+</div>
+
+@code {
+    private List<OrderModel> _orders;
+    private string _searchTerm;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _orders = await Db.GetOrders("");
+        _orders = _orders.GroupBy(o => o.Id).Select(g => g.First()).ToList();
+    }
+
+    private async Task OnSubmit()
+    {
+        _orders = await Db.GetOrders(_searchTerm);
+        _orders = _orders.GroupBy(o => o.Id).Select(g => g.First()).ToList();
+        await Message.Info("Search complete.");
+    }
+}

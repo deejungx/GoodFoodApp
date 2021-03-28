@@ -32,6 +32,7 @@ namespace GoodFood
             services.AddTransient<IMenuItemData, MenuItemData>();
             services.AddTransient<ILoyaltyPointsData, LoyaltyPointsData>();
             services.AddTransient<IUserAddressData, UserAddressData>();
+            services.AddTransient<IOrderData, OrderData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

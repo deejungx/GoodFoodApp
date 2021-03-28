@@ -18,7 +18,7 @@
 }
 else
 {
-    <Title Level="1" Style="margin-bottom: 1.2em;">Add MenuItem</Title>
+    <Title Level="1" Style="margin-bottom: 1.2em;">Add Loyalty point</Title>
 
 
     <div style="white-space: nowrap; margin-left: 40px; margin-bottom: 1.2em;">
@@ -93,21 +93,30 @@ else
 
     private async Task InsertLoyaltyPoint(EditContext editContext)
     {
-        var r = new Random();
-        var newId = r.Next(10000);
+        int dateCompare = DateTime.Compare(_newLoyaltyPoint.ActiveFrom, _newLoyaltyPoint.ActiveUntil);
 
-        var loyaltyPoint = new LoyaltyPointsModel
+        if (dateCompare >= 0)
         {
-            Id = newId,
-            Status = _newLoyaltyPoint.Status,
-            Points = _newLoyaltyPoint.Points,
-            ActiveFrom = _newLoyaltyPoint.ActiveFrom,
-            ActiveUntil = _newLoyaltyPoint.ActiveUntil,
-            MenuId = _menuItems.First(menu => menu.DisplayName == _selectedMenuItem).Id
-        };
-        await Db.InsertLoyaltyPoint(loyaltyPoint);
-        await Message.Success("New Loyalty Point Added.");
-        _form.Reset();
+            await Message.Error("Active-From date must be earlier than Active-until date.");
+        }
+        else
+        {
+            var r = new Random();
+            var newId = r.Next(10000);
+
+            var loyaltyPoint = new LoyaltyPointsModel
+            {
+                Id = newId,
+                Status = _newLoyaltyPoint.Status,
+                Points = _newLoyaltyPoint.Points,
+                ActiveFrom = _newLoyaltyPoint.ActiveFrom,
+                ActiveUntil = _newLoyaltyPoint.ActiveUntil,
+                MenuId = _menuItems.First(menu => menu.DisplayName == _selectedMenuItem).Id
+            };
+            await Db.InsertLoyaltyPoint(loyaltyPoint);
+            await Message.Success("New Loyalty Point Added.");
+            _form.Reset();
+        }
     }
 
     private async Task OnFinishFailed(EditContext editContext)

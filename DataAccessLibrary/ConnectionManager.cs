@@ -177,9 +177,9 @@ namespace DataAccessLibrary
 
             using IDbConnection connection = new OracleConnection(connectionString);
             connection.Open();
-            var data = await connection.QueryAsync<OrderModel, LineItemModel, CustomerModel, OrderModel>(
+            var data = await connection.QueryAsync<OrderModel, LineItemModel, MenuItemModel, CustomerModel, OrderModel>(
                 sql,
-                (order, lineItem, customer) =>
+                (order, lineItem, menuItem, customer) =>
                 {
                     OrderModel orderEntry;
 
@@ -192,6 +192,39 @@ namespace DataAccessLibrary
                     }
 
                     orderEntry.LineItems.Add(lineItem);
+                    lineItem.MenuItem = menuItem;
+                    orderEntry.User = customer;
+                    return orderEntry;
+                },
+                parameters,
+                splitOn:"Id");
+            return data.ToList();
+        }
+
+        public async Task<List<OrderModel>> GetTopRestaurantOrders<T>(string sql, T parameters)
+        {
+            var connectionString = _config.GetConnectionString(ConnString);
+            var orderDictionary = new Dictionary<int, OrderModel>();
+
+            using IDbConnection connection = new OracleConnection(connectionString);
+            connection.Open();
+            var data = await connection.QueryAsync<OrderModel, LineItemModel, MenuItemModel, CustomerModel, RestaurantModel, OrderModel>(
+                sql,
+                (order, lineItem, menuItem, customer, restaurant) =>
+                {
+                    OrderModel orderEntry;
+
+                    if (!orderDictionary.TryGetValue(order.Id, out orderEntry))
+                    {
+                        orderEntry = order;
+                        orderEntry.LineItems = new List<LineItemModel>();
+                        orderEntry.User = new CustomerModel();
+                        orderDictionary.Add(orderEntry.Id, orderEntry);
+                    }
+
+                    orderEntry.LineItems.Add(lineItem);
+                    lineItem.MenuItem = menuItem;
+                    menuItem.Restaurant = restaurant;
                     orderEntry.User = customer;
                     return orderEntry;
                 },

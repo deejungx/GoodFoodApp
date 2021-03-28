@@ -1,0 +1,59 @@
+﻿@page "/order/activity"
+
+@using DataAccessLibrary
+@using DataAccessLibrary.Models
+@using Oracle.ManagedDataAccess.Client
+
+@inject IOrderData Db
+@inject MessageService Message
+@inject NavigationManager NavigationManager
+
+<Title Level="1">Order Activity</Title>
+
+<Divider />
+
+<Title Level="3">Search for username:</Title>
+
+<div style="margin-bottom: 20px; width: 500px; margin-left: 20px;">
+    <AntDesign.Search Id="searchBar" Size="@InputSize.Large" EnterButton="@("Search")" @bind-Value="@_searchTerm" OnSearch="OnSubmit" />
+</div>
+
+
+<div style="width: 800px;">
+    <AntList DataSource="@_orders" TItem="OrderModel" Size="large">
+        <ListItem>
+            <ListItemMeta>
+                <DescriptionTemplate>
+                    <Descriptions Title="Result">
+                        <DescriptionsItem Title="Restaurant">@context.LineItems[0].MenuItem.Restaurant.Name</DescriptionsItem>
+                        <DescriptionsItem Title="# of Orders">@context.LineItems[0].Quantity</DescriptionsItem>
+                    </Descriptions>
+                </DescriptionTemplate>
+                <TitleTemplate>
+                    Result
+                </TitleTemplate>
+            </ListItemMeta>
+        </ListItem>
+    </AntList>
+</div>
+
+
+@code {
+
+    private List<OrderModel> _orders;
+    private string _searchTerm;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _orders = await Db.GetTopRestaurants("deejung");
+        _orders = _orders.GroupBy(o => o.Id).Select(g => g.First()).ToList();
+    }
+
+    private async Task OnSubmit()
+    {
+        _orders = await Db.GetTopRestaurants(_searchTerm);
+        _orders = _orders.GroupBy(o => o.Id).Select(g => g.First()).ToList();
+        await Message.Info("Search complete.");
+    }
+
+}
